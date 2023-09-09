@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import path from 'path'
 
 import authRouter from './app/auth/auth.routes.js'
+import exerciseRouter from './app/exercise/exercise.routes.js'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 import { prisma } from './app/prisma.js'
 import userRouter from './app/user/user.routes.js'
@@ -23,6 +24,7 @@ async function main() {
 
 	app.use('/api/auth', authRouter)
 	app.use('/api/users', userRouter)
+	app.use('/api/exercises', exerciseRouter)
 
 	app.use(notFound)
 	app.use(errorHandler)

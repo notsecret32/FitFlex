@@ -1,9 +1,12 @@
+import { RouterProvider } from 'react-router-dom'
+
 import Layout from './components/layout/Layout'
+import { router } from './routes/Routes'
 
 const App = () => {
 	return (
 		<Layout>
-			<div>Hello, React!</div>
+			<RouterProvider router={router} />
 		</Layout>
 	)
 }

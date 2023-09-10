@@ -7,7 +7,7 @@ const Header = () => {
 	return (
 		<header className={styles.header}>
 			<button onClick={() => {}}>
-				<FiArrowLeft color='white' />
+				<FiArrowLeft color='white' fontSize={30} />
 			</button>
 			<Hamburger />
 		</header>

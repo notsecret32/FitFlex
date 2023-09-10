@@ -47,7 +47,7 @@ export const getExerciseLog = asyncHandler(async (req, res) => {
 
 		res.json({ ...exerciseLog, times: newTimes })
 	} catch (error) {
-		res.status(404)
-		throw new Error('ExerciseLog not found')
+		res.status(400)
+		throw new Error('Something went wrong')
 	}
 })

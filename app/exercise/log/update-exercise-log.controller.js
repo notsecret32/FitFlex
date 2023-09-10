@@ -31,7 +31,7 @@ export const updateExerciseLogTime = asyncHandler(async (req, res) => {
 
 /**
  * Update status of complete exercise log
- * @route PATCH /api/exercise/log/complete
+ * @route PATCH /api/exercise/log/complete/:id
  * @access Private
  */
 export const completeExerciseLog = asyncHandler(async (req, res) => {

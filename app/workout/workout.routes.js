@@ -1,4 +1,5 @@
 import express from 'express'
+
 import { protect } from '../middleware/auth.middleware.js'
 import { getWorkoutLog } from './log/get-workout-log.controller.js'
 import { completeWorkoutLog } from './log/update-workout-log.controller.js'

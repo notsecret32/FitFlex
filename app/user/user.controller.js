@@ -43,7 +43,7 @@ export const getUserProfile = asyncHandler(async (req, res) => {
 	})
 
 	res.json({
-		user,
+		...user,
 		stats: [
 			{
 				label: 'Minutes',

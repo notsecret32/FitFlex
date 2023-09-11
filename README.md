@@ -12,15 +12,17 @@ Below is a list of the main technologies that were used in the development of th
 
 List of major technologies and libraries:
 
-- JavaScript
-- SCSS
-- React
-- React Query
-- React Select
-- React Hook Forms
-- React Router DOM
+- Axios
+- Cookie
 - ESLint
+- JavaScript
 - Prettier
+- React
+- React Hook Forms
+- React Query
+- React Router DOM
+- React Select
+- SCSS
 - Vite
 - Yarn
 

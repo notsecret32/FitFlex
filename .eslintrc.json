@@ -10,12 +10,5 @@
 		"browser": true,
 		"es2021": true
 	},
-	"settings": {
-		"import/resolver": {
-			"alias": {
-				"map": [["@/", "./app"]]
-			},
-			"extensions": [".js"]
-		}
-	}
+	"settings": {}
 }

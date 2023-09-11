@@ -17,8 +17,8 @@ List of major technologies and libraries:
 - React
 - React Query
 - React Select
+- React Hook Forms
 - React Router DOM
-- Redux
 - ESLint
 - Prettier
 - Vite

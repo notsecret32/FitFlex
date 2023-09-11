@@ -14,16 +14,16 @@ const Header = ({ backLink = '' }) => {
 
 	return (
 		<header className={styles.header}>
-			{pathname !== '/' ? (
-				<button onClick={() => navigate(backLink || '/')}>
+			{pathname !== '/' || !isAuth ? (
+				<button onClick={() => navigate(isAuth ? backLink : '/auth')}>
 					<FiArrowLeft color='white' fontSize={30} />
 				</button>
 			) : (
-				<button onClick={() => navigate(isAuth ? '/profile' : '/auth')}>
+				<button onClick={() => navigate('/profile')}>
 					<SlUser fill='#fff' fontSize={30} />
 				</button>
 			)}
-			<Hamburger />
+			{isAuth && <Hamburger />}
 		</header>
 	)
 }

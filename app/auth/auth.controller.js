@@ -12,20 +12,20 @@ import { userSelectedFields } from '../utils/user.utils.js'
  * @access Public
  */
 export const authUser = asyncHandler(async (req, res) => {
-	try {
-		const { email, password } = req.body
+	const { email, password } = req.body
 
-		const user = await prisma.user.findUnique({
-			where: {
-				email
-			}
-		})
-
-		if (!user) {
-			res.status(404)
-			throw new Error('User not found!')
+	const user = await prisma.user.findUnique({
+		where: {
+			email
 		}
+	})
 
+	if (!user) {
+		res.status(404)
+		throw new Error('User not found!')
+	}
+
+	try {
 		const isValidPassword = await verify(user.password, password)
 
 		if (user && isValidPassword) {

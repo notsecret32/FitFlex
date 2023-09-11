@@ -5,14 +5,14 @@ import Profile from '../pages/profile/Profile'
 
 export const routes = [
 	{
-		path: '/',
-		component: Home,
-		isAuth: false
-	},
-	{
 		path: '/auth',
 		component: Auth,
 		isAuth: false
+	},
+	{
+		path: '/',
+		component: Home,
+		isAuth: true
 	},
 	{
 		path: '/new-workout',

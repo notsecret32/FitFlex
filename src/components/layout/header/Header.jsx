@@ -12,18 +12,34 @@ const Header = ({ backLink = '' }) => {
 
 	const { isAuth } = useAuth()
 
+	const handlePathname = () => {
+		if (isAuth) {
+			return backLink || '/'
+		}
+
+		if (pathname === '/profile' && isAuth) {
+			return '/'
+		}
+
+		return '/auth'
+	}
+
 	return (
 		<header className={styles.header}>
-			{pathname !== '/' || !isAuth ? (
-				<button onClick={() => navigate(isAuth ? backLink : '/auth')}>
-					<FiArrowLeft color='white' fontSize={30} />
-				</button>
-			) : (
-				<button onClick={() => navigate('/profile')}>
-					<SlUser fill='#fff' fontSize={30} />
-				</button>
+			{isAuth && (
+				<>
+					{pathname === '/' && isAuth ? (
+						<button onClick={() => navigate('/profile')}>
+							<SlUser fill='#fff' fontSize={30} />
+						</button>
+					) : (
+						<button onClick={() => navigate(handlePathname())}>
+							<FiArrowLeft color='white' fontSize={30} />
+						</button>
+					)}
+					{isAuth && <Hamburger />}
+				</>
 			)}
-			{isAuth && <Hamburger />}
 		</header>
 	)
 }

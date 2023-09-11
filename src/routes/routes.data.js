@@ -7,21 +7,21 @@ export const routes = [
 	{
 		path: '/',
 		component: Home,
-		auth: false
+		isAuth: false
 	},
 	{
 		path: '/auth',
 		component: Auth,
-		auth: false
+		isAuth: false
 	},
 	{
 		path: '/new-workout',
 		component: NewWorkout,
-		auth: false
+		isAuth: true
 	},
 	{
 		path: '/profile',
 		component: Profile,
-		auth: false
+		isAuth: true
 	}
 ]

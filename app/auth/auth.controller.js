@@ -12,25 +12,35 @@ import { userSelectedFields } from '../utils/user.utils.js'
  * @access Public
  */
 export const authUser = asyncHandler(async (req, res) => {
-	const { email, password } = req.body
+	try {
+		const { email, password } = req.body
 
-	const user = await prisma.user.findUnique({
-		where: {
-			email
+		const user = await prisma.user.findUnique({
+			where: {
+				email
+			}
+		})
+
+		if (!user) {
+			res.status(404)
+			throw new Error('User not found!')
 		}
-	})
 
-	const isValidPassword = await verify(user.password, password)
+		const isValidPassword = await verify(user.password, password)
 
-	if (user && isValidPassword) {
-		const token = generateToken(user.id)
-		res.json({ user, token })
-	} else {
-		res.status(401)
-		throw new Error('Email and password are not correct')
+		if (user && isValidPassword) {
+			const token = generateToken(user.id)
+			res.json({ user, token })
+		} else {
+			res.status(401)
+			throw new Error('Email and password are not correct')
+		}
+
+		res.json(user)
+	} catch (error) {
+		res.status(400)
+		throw new Error('Something went wrong')
 	}
-
-	res.json(user)
 })
 
 /**
@@ -39,30 +49,35 @@ export const authUser = asyncHandler(async (req, res) => {
  * @access Public
  */
 export const registerUser = asyncHandler(async (req, res) => {
-	const { email, password } = req.body
+	try {
+		const { email, password } = req.body
 
-	const isHaveUser = await prisma.user.findUnique({
-		where: {
-			email
+		const isHaveUser = await prisma.user.findUnique({
+			where: {
+				email
+			}
+		})
+
+		if (isHaveUser) {
+			res.status(400)
+			throw new Error('User already exists')
 		}
-	})
 
-	if (isHaveUser) {
+		const user = await prisma.user.create({
+			data: {
+				email,
+				password: await hash(password),
+				name: faker.person.fullName(),
+				images: faker.image.avatar()
+			},
+			select: userSelectedFields
+		})
+
+		const token = generateToken(user.id)
+
+		res.json({ user, token })
+	} catch (error) {
 		res.status(400)
-		throw new Error('User already exists')
+		throw new Error('Something went wrong')
 	}
-
-	const user = await prisma.user.create({
-		data: {
-			email,
-			password: await hash(password),
-			name: faker.person.fullName(),
-			images: faker.image.avatar()
-		},
-		select: userSelectedFields
-	})
-
-	const token = generateToken(user.id)
-
-	res.json({ user, token })
 })

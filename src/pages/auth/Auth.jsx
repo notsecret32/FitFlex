@@ -1,42 +1,13 @@
-import { useMutation } from '@tanstack/react-query'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-
-import { useNavigate } from 'react-router-dom'
 import Layout from '../../components/layout/Layout'
 import Button from '../../components/ui/button/Button'
 import Field from '../../components/ui/field/Field'
 import Loader from '../../components/ui/loader/Loader'
-import { AuthService } from '../../services/auth.service'
+import { useAuthPage } from '../../hooks/useAuthPage'
 import styles from './Auth.module.scss'
 
 const Auth = () => {
-	const [type, setType] = useState('login')
-	const navigate = useNavigate()
-
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-		reset
-	} = useForm({
-		mode: 'onChange'
-	})
-
-	const { mutate, isLoading } = useMutation(
-		['auth'],
-		({ email, password }) => AuthService.main(email, password, type),
-		{
-			onSuccess: () => {
-				reset()
-				navigate('/')
-			}
-		}
-	)
-
-	const onSubmit = data => {
-		mutate(data)
-	}
+	const { errors, handleSubmit, isLoading, onSubmit, register, setType } =
+		useAuthPage()
 
 	return (
 		<>

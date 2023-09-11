@@ -7,6 +7,10 @@ import Header from './header/Header'
 const Layout = ({ children, bgImage, heading = '', backLink = '' }) => {
 	useCheckToken()
 
+	if (bgImage && !heading && !children) {
+		console.warn('It looks like you forgot to pass the `heading` to Layout')
+	}
+
 	return (
 		<section
 			className={cn(styles.wrapper, {

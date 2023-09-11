@@ -1,5 +1,6 @@
 import cn from 'clsx'
 
+import { Link } from 'react-router-dom'
 import styles from './Hamburger.module.scss'
 import { menu } from './menu.data'
 
@@ -15,8 +16,7 @@ const Menu = ({ isShow }) => {
 			<ul>
 				{menu.map((item, index) => (
 					<li key={`_menu_${index}`}>
-						{item.title}
-						{/* <Link to={item.link}>{item.title}</Link> */}
+						<Link to={item.link}>{item.title}</Link>
 					</li>
 				))}
 				<li>

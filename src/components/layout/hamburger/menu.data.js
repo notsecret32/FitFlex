@@ -1,7 +1,7 @@
 export const menu = [
 	{
-		title: 'Workout',
-		link: '/workout'
+		title: 'Workouts',
+		link: '/workouts'
 	},
 	{
 		title: 'Create new',

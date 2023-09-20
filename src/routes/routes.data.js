@@ -1,9 +1,11 @@
 import Auth from '../pages/auth/Auth'
+import ExerciseLog from '../pages/exercise-log/ExerciseLog'
 import Home from '../pages/home/Home'
 import NewExercise from '../pages/new-exercise/NewExercise'
 import NewWorkout from '../pages/new-workout/NewWorkout'
 import Profile from '../pages/profile/Profile'
-import Workout from '../pages/workout/Workout'
+import Workout from '../pages/workouts/detail/Workout'
+import ListWorkouts from '../pages/workouts/list/ListWorkouts'
 
 export const routes = [
 	{
@@ -27,6 +29,11 @@ export const routes = [
 		isAuth: true
 	},
 	{
+		path: '/workouts',
+		component: ListWorkouts,
+		isAuth: true
+	},
+	{
 		path: '/profile',
 		component: Profile,
 		isAuth: true
@@ -34,6 +41,11 @@ export const routes = [
 	{
 		path: '/new-exercise',
 		component: NewExercise,
+		isAuth: true
+	},
+	{
+		path: '/exercise/:id',
+		component: ExerciseLog,
 		isAuth: true
 	}
 ]

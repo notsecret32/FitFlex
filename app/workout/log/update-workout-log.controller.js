@@ -23,7 +23,7 @@ export const completeWorkoutLog = asyncHandler(async (req, res) => {
 
 		res.json(workoutLog)
 	} catch (error) {
-		res.status(400)
+		res.status(404)
 		throw new Error('workoutLog not found')
 	}
 })

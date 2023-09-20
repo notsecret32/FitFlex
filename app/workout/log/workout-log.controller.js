@@ -21,7 +21,7 @@ export const createNewWorkoutLog = asyncHandler(async (req, res) => {
 
 	if (!workout) {
 		res.status(404)
-		throw new Error('WorkoutLog not found!')
+		throw new Error('Workout not found!')
 	}
 
 	try {
@@ -37,7 +37,7 @@ export const createNewWorkoutLog = asyncHandler(async (req, res) => {
 						id: id
 					}
 				},
-				exerciseLog: {
+				exerciseLogs: {
 					create: workout.exercises.map(exercise => ({
 						user: {
 							connect: {
@@ -59,7 +59,7 @@ export const createNewWorkoutLog = asyncHandler(async (req, res) => {
 				}
 			},
 			include: {
-				exerciseLog: {
+				exerciseLogs: {
 					include: {
 						times: true
 					}
@@ -70,6 +70,6 @@ export const createNewWorkoutLog = asyncHandler(async (req, res) => {
 		res.json(workoutLog)
 	} catch (error) {
 		res.status(400)
-		throw new Error('Something went wrong')
+		throw new Error(error)
 	}
 })

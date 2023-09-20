@@ -21,10 +21,7 @@ const Workout = () => {
 	return (
 		<>
 			<HeaderWorkout isSuccess={isSuccess} workoutLog={workoutLog} />
-			<div
-				className='wrapper-inner-page'
-				style={{ paddingLeft: 0, paddingRight: 0 }}
-			>
+			<div className='wrapper-inner-page' style={{ padding: '15px 30px' }}>
 				<div style={{ width: '90%', margin: '0 auto' }}>{/* error */}</div>
 			</div>
 			{isLoading ? (

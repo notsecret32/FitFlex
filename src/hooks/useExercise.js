@@ -6,8 +6,7 @@ import { ExerciseService } from '../services/exercise/exercise.service'
 export const useExercise = () => {
 	const { mutate, isSuccess, error, isLoading } = useMutation(
 		['create exercise'],
-		({ name, times, iconPath }) =>
-			ExerciseService.create(name, times, iconPath),
+		body => ExerciseService.create(body),
 		{
 			onSuccess: () => {
 				reset()
@@ -25,8 +24,8 @@ export const useExercise = () => {
 		mode: 'onChange'
 	})
 
-	const onSubmit = ({ name, times, iconPath }) => {
-		mutate({ name, times, iconPath })
+	const onSubmit = body => {
+		mutate(body)
 	}
 
 	return useMemo(

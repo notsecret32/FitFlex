@@ -9,24 +9,16 @@ export const ExerciseService = {
 			throw new Error(error)
 		}
 	},
-	create: async (name, times, iconPath) => {
+	create: async body => {
 		try {
-			return $axios.post(API_EXERCISES, {
-				name,
-				times,
-				iconPath
-			})
+			return $axios.post(API_EXERCISES, body)
 		} catch (error) {
 			throw new Error(error)
 		}
 	},
-	update: async (id, name, times, iconPath) => {
+	update: async (id, body) => {
 		try {
-			return $axios.put(`${API_EXERCISES}/${id}`, {
-				name,
-				times,
-				iconPath
-			})
+			return $axios.put(`${API_EXERCISES}/${id}`, body)
 		} catch (error) {
 			throw new Error(error)
 		}
